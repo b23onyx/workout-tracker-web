@@ -24,8 +24,11 @@ export const api = {
     request<any>(`/api/sessions/${id}`, { method: 'DELETE' }),
   completeSet: (id: number, data: { completed?: boolean; actual_weight?: number; actual_reps?: number }) =>
     request<any>(`/api/sets/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  updateSessionNotes: (id: number, notes: string) =>
+    request<any>(`/api/sessions/${id}/notes`, { method: 'PATCH', body: JSON.stringify({ notes }) }),
   getSessions: (limit = 20) => request<any[]>(`/api/sessions?limit=${limit}`),
   getSession: (id: number) => request<any>(`/api/sessions/${id}`),
   getStats: () => request<any>('/api/stats'),
   getProgression: () => request<any[]>('/api/progression'),
+  getAdaptations: () => request<any[]>('/api/adaptations'),
 }
