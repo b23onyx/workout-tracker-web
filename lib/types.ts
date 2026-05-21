@@ -1,9 +1,16 @@
+export interface WarmupCardio {
+  name: string
+  duration_minutes: number
+  notes: string | null
+}
+
 export interface Template {
   id: number
   name: string
   day_type: string
   description: string
   day_of_week: number
+  warmup_cardio?: WarmupCardio
   exercises: TemplateExercise[]
 }
 
@@ -26,6 +33,7 @@ export interface TemplateExercise {
   prog_unit: string | null
   next_target: number | null
   prog_notes: string | null
+  phase: string
 }
 
 export interface Session {
@@ -37,6 +45,7 @@ export interface Session {
   notes: string | null
   template_name?: string
   day_type?: string
+  warmup_cardio?: WarmupCardio
   sets: SessionSet[]
   completed_sets?: number
   total_sets?: number
@@ -54,11 +63,12 @@ export interface SessionSet {
   actual_reps: number | null
   completed: number
   completed_at: string | null
-  weight_unit: string
+  weight_unit: string | null
   name: string
   muscle_group: string
   equipment: string | null
   exercise_notes: string | null
+  phase: string
 }
 
 export interface Stats {
